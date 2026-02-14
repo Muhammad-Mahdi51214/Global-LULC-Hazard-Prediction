@@ -78,6 +78,9 @@ def classify_by_name(req: ClassifyByNameRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/health")
+def health():
+    return {"status": "alive"}
 # ============== GEE LULC Classification Endpoint ==============
 @app.post("/api/lulc/classify")
 def api_lulc_classify(req: gee_ca.ClassifyRequest):
